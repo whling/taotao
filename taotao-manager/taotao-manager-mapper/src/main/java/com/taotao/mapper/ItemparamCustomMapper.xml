@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.ItemparamCustomMapper">
+	<resultMap type="com.taotao.pojo.custom.ItemparamCustom" id="CustomResultMap" extends="com.taotao.mapper.TbItemParamMapper.ResultMapWithBLOBs">
+		<result column="itemCatName" property="itemCatName" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="selectItemparamList" resultMap="CustomResultMap">
+		SELECT
+		tb_item_param.*, tb_item_cat.NAME itemCatName
+		FROM
+		tb_item_param
+		LEFT JOIN tb_item_cat ON tb_item_cat.id = tb_item_param.item_cat_id
+	</select>
+</mapper>

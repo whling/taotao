@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.ItemSearchCustomMapper">
+	
+	<select id="getSearchIndexFromDB" resultType="com.taotao.pojo.custom.ItemSearchCustom">
+		SELECT
+		tb_item.id,
+		tb_item.title,
+		tb_item.sell_point sellPoint,
+		tb_item.price,
+		tb_item.image,
+		tb_item_cat.`name`
+		FROM
+		tb_item
+		LEFT JOIN tb_item_cat ON tb_item.cid =
+		tb_item_cat.id
+	</select>
+</mapper>
